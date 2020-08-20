@@ -38,9 +38,12 @@
 				},
 				{
 					"name": "Select1"
+				},
+				{
+					"name": "Union1"
 				}
 			],
-			"script": "source(output(\n\t\tId as string,\n\t\tName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1\nsource(output(\n\t\tId as string,\n\t\tName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> source2\nsource1 derive(dummy = 'dummy') ~> DerivedColumn1\nDerivedColumn1 aggregate(groupBy(dummy),\n\tMaxId = max(Id)) ~> Aggregate1\nAggregate1, source2 join(1==1,\n\tjoinType:'cross',\n\tbroadcast: 'auto')~> Join1\nJoin1 keyGenerate(output(Id as long),\n\tstartAt: 1L) ~> SurrogateKey1\nSurrogateKey1 derive(Id = toString(toInteger(Id) + toInteger(MaxId))) ~> DerivedColumn2\nDerivedColumn2 select(mapColumn(\n\t\tId,\n\t\tName\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1"
+			"script": "source(output(\n\t\tId as string,\n\t\tName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> source1\nsource(output(\n\t\tId as string,\n\t\tName as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> source2\nsource1 derive(dummy = 'dummy') ~> DerivedColumn1\nDerivedColumn1 aggregate(groupBy(dummy),\n\tMaxId = max(Id)) ~> Aggregate1\nAggregate1, source2 join(1==1,\n\tjoinType:'cross',\n\tbroadcast: 'auto')~> Join1\nJoin1 keyGenerate(output(Id as long),\n\tstartAt: 1L) ~> SurrogateKey1\nSurrogateKey1 derive(Id = toString(toInteger(Id) + toInteger(MaxId))) ~> DerivedColumn2\nDerivedColumn2 select(mapColumn(\n\t\tId,\n\t\tName\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nsource1, Select1 union(byName: true)~> Union1"
 		}
 	}
 }
