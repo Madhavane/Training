@@ -45,7 +45,7 @@
 				"typeProperties": {
 					"variableName": "Filecount",
 					"value": {
-						"value": "length(@string(activity('Get Metadata1').output.childItems) )",
+						"value": "@string(length(activity('Get Metadata1').output.childItems))",
 						"type": "Expression"
 					}
 				}
