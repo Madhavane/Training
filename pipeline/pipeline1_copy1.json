@@ -56,6 +56,26 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Filter1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Filecount",
+					"value": {
+						"value": "@string(activity('Filter1').output.FilteredItemsCount)",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
