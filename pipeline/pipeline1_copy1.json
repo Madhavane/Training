@@ -48,11 +48,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata1').output.chilfItems",
+						"value": "@activity('Get Metadata1').output.childItems",
 						"type": "Expression"
 					},
 					"condition": {
-						"value": "@startswith(Item().name,'emp')",
+						"value": "@startswith(item().name,'emp')",
 						"type": "Expression"
 					}
 				}
