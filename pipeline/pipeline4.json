@@ -20,11 +20,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"Folder": {
-								"value": "@pipeline().parameters.Folder",
+								"value": "@pipeline().parameters.Folder1",
 								"type": "Expression"
 							},
 							"File": {
-								"value": "@pipeline().parameters.File",
+								"value": "*.csv",
 								"type": "Expression"
 							}
 						}
@@ -43,10 +43,7 @@
 			}
 		],
 		"parameters": {
-			"Folder": {
-				"type": "string"
-			},
-			"File": {
+			"Folder1": {
 				"type": "string"
 			}
 		},
