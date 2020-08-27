@@ -16,20 +16,18 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Sourcedataset",
+						"referenceName": "Sourfileinput",
 						"type": "DatasetReference",
 						"parameters": {
-							"Filename": {
-								"value": "*.csv",
-								"type": "Expression"
-							}
+							"Filename": ".csv"
 						}
 					},
 					"fieldList": [
 						"columnCount"
 					],
 					"storeSettings": {
-						"type": "AzureBlobStorageReadSettings"
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true
 					},
 					"formatSettings": {
 						"type": "DelimitedTextReadSettings"
