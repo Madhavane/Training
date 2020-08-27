@@ -73,15 +73,8 @@
 									}
 								},
 								"sink": {
-									"type": "DelimitedTextSink",
-									"storeSettings": {
-										"type": "AzureBlobStorageWriteSettings"
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
-									}
+									"type": "SqlServerSink",
+									"preCopyScript": "create table dbo.em(id integer,name varchar2(50))"
 								},
 								"enableStaging": false,
 								"translator": {
@@ -94,8 +87,7 @@
 												"ordinal": 1
 											},
 											"sink": {
-												"type": "String",
-												"ordinal": 1
+												"type": "String"
 											}
 										},
 										{
@@ -105,8 +97,7 @@
 												"ordinal": 2
 											},
 											"sink": {
-												"type": "String",
-												"ordinal": 2
+												"type": "String"
 											}
 										}
 									],
@@ -125,7 +116,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DelimitedText5",
+									"referenceName": "SqlServerTable1",
 									"type": "DatasetReference"
 								}
 							]
