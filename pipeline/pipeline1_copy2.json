@@ -66,7 +66,9 @@
 									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
-										"recursive": true
+										"recursive": true,
+										"wildcardFolderPath": "Target",
+										"wildcardFileName": "*"
 									},
 									"formatSettings": {
 										"type": "DelimitedTextReadSettings"
@@ -125,6 +127,14 @@
 				}
 			}
 		],
+		"parameters": {
+			"folder": {
+				"type": "string"
+			},
+			"file": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"Filecount": {
 				"type": "String"
