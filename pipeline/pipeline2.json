@@ -75,7 +75,7 @@
 									"type": "DelimitedTextSource",
 									"additionalColumns": [
 										{
-											"name": "Filename",
+											"name": "Filename1",
 											"value": "$$FILEPATH"
 										}
 									],
@@ -112,6 +112,16 @@
 											},
 											"sink": {
 												"name": "name",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Filename1"
+											},
+											"sink": {
+												"name": "email",
 												"type": "String",
 												"physicalType": "varchar"
 											}
